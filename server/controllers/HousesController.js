@@ -37,7 +37,7 @@ export class HousesController extends BaseController {
     try {
       req.body.creatorId = req.userInfo.id
       const house = await housesService.create(req.body)
-      return res.send('Created!')
+      return res.send('Created!', house)
     } catch (error) {
       next(error)
     }
@@ -48,7 +48,7 @@ export class HousesController extends BaseController {
       req.body.creatorId = req.userInfo.id
       req.body.id = req.params.id
       const house = await housesService.edit(req.body)
-      return res.send('Edited')
+      return res.send('Edited', house)
     } catch (error) {
       next(error)
     }
